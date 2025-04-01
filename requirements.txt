@@ -1,0 +1,11 @@
+adafruit-ampy==1.0.7
+docopt==0.6.2
+pyserial==3.5
+
+# https://micropython-stubs.readthedocs.io/en/main/24_pycharm.html
+micropython-stm32-stubs==1.23.0.*
+micropython-esp32-stubs==1.23.0.*
+
+mpy-cross==1.24.1.*
+
+mpremote==1.24.1
