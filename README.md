@@ -1,6 +1,6 @@
 # Intelligent Intercom Electra IA01
 
-This is a custom thermostat built for the [GroundStudio Carbon S2](https://github.com/GroundStudio/GroundStudio_Carbon_S2/tree/main) board.
+This is a custom intercom system built for the [GroundStudio Carbon S2](https://github.com/GroundStudio/GroundStudio_Carbon_S2/tree/main) board.
 
 See the official documentation for ESP32 and MicroPython [here](https://docs.micropython.org/en/latest/esp32/quickref.html#).
 
@@ -18,7 +18,7 @@ To use vscode read this article: https://micropython-stubs.readthedocs.io/en/mai
 Install virtualenv:
 
 ```shell
-pip install virtualenv;
+pip install virtualenv
 ```
 
 Create a virtual env called `.venv` in the current directory:
