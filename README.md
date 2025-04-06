@@ -13,6 +13,22 @@ it before it can be used:
 
 To use vscode read this article: https://micropython-stubs.readthedocs.io/en/main/22_vscode.html
 
+### VSCode Settings File
+
+```json
+{
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportMissingModuleSource": "none"
+    },
+    "python.analysis.typeshedPaths": [
+        ".venv/lib/python3.12/site-packages",
+        "typings"
+    ],
+}
+```
+
 ## Virtual env
 
 Install virtualenv:
