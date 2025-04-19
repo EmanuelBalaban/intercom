@@ -63,10 +63,12 @@ def handle_ringing():
     log("Waiting for open command...")
     while is_ringing() and not should_open_door:
         try:
-            client.wait_msg()
+            client.check_msg()
         except OSError as e:
             log(f"MQTT error: {e}")
             break
+
+    client.check_msg()
 
     if should_open_door:
         open()
@@ -154,8 +156,15 @@ def send_discovery_messages():
 def log(msg: str):
     print(msg)
     if client is not None:
-        client.publish(config.MQTT_LOG_TOPIC, msg)
-        client.check_msg()
+        try:
+            client.publish(config.MQTT_LOG_TOPIC, msg)
+            client.check_msg()
+        except:
+            print('Unable to send log message')
 
 
-main()
+try:
+    main()
+except:
+    print('Something unexpected happened!')
+    machine.reset()
