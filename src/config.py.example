@@ -1,0 +1,52 @@
+# Enable/disable wifi connectivity
+ENABLE_WIFI = True
+WIFI_SSID = ''
+WIFI_PASSWD = ''
+
+# MQTT Settings
+MQTT_SERVER = ''
+MQTT_USER = ''
+MQTT_PASSWD = ''
+
+MQTT_LOG_TOPIC = b'home/intercom/log'
+MQTT_RINGING_TOPIC = b'home/intercom/ringing'
+MQTT_OPEN_DOOR_TOPIC = b'home/intercom/door/open'
+
+_MQTT_DISCOVERY_DEVICE = {
+    'identifiers': ['intercom'],
+    'name': 'Intercom',
+    'suggested_area': 'Hallway',
+    'manufacturer': 'GroundStudio',
+    'model': 'Carbon S2',
+    'hw_version': 'ESP32',
+    'sw_version': 'MicroPython'
+}
+
+MQTT_RINGING_DISCOVERY_TOPIC = b'homeassistant/binary_sensor/intercom_ringing/config'
+MQTT_RINGING_DISCOVERY_PAYLOAD = {
+    'device': _MQTT_DISCOVERY_DEVICE,
+    'object_id': 'intercom_ringing',
+    'unique_id': 'intercom_ringing',
+    'name': 'Intercom Ringing',
+    'platform': 'binary_sensor',
+    'device_class': 'door',
+    'state_topic': MQTT_RINGING_TOPIC,
+    'off_delay': 30
+}
+
+MQTT_OPEN_DOOR_DISCOVERY_TOPIC = b'homeassistant/button/open_intercom_door/config'
+MQTT_OPEN_DOOR_DISCOVERY_PAYLOAD = {
+    'device': _MQTT_DISCOVERY_DEVICE,
+    'object_id': 'open_intercom_door',
+    'unique_id': 'open_intercom_door',
+    'name': 'Open Intercom Door',
+    'platform': 'button',
+    'command_topic': MQTT_OPEN_DOOR_TOPIC,
+}
+
+# Pins
+NEO_PIXEL_DATA_PIN = 1
+NEO_PIXEL_POWER_PIN = 2
+RINGING_PIN = 4
+TALK_PIN = 5
+OPEN_PIN = 6
