@@ -4,7 +4,7 @@ def connect_to_wifi():
     import network, time
     import config
 
-    print('Connecting to WiFi')
+    print("Connecting to WiFi")
 
     wlan = network.WLAN(network.WLAN.IF_STA)
     wlan.active(config.ENABLE_WIFI)
@@ -14,7 +14,7 @@ def connect_to_wifi():
     
     # Reset connection status
     if wlan.isconnected():
-        # wlan.disconnect()
+        wlan.disconnect()
         return
     
     wlan.connect(config.WIFI_SSID, config.WIFI_PASSWD)
@@ -31,7 +31,10 @@ connect_to_wifi()
 
 gc.collect()
 
-import ntptime
+try:
+    import ntptime
 
-print('Updating time from NTP server...')
-ntptime.settime()
+    print("Updating time from NTP server...")
+    ntptime.settime()
+except:
+    print("Failed to update time from NTP server...")
