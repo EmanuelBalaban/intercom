@@ -1,10 +1,10 @@
-import asyncio, intercom, mqtt_handler, machine, utils
+import asyncio, intercom, mqtt_handler, machine, utils, config
 
 async def main():
     intercom.init()
     await mqtt_handler.setup()
 
-    await utils.log("Booting up")
+    await utils.log("Booting up. Version: {}".format(config.VERSION))
 
     if machine.reset_cause() == machine.DEEPSLEEP_RESET:
         await utils.log("Woke from deep sleep due to EXT0")
